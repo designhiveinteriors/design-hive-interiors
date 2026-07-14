@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Hive Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="assets/logo.png" alt="Design Hive Interiors Logo" class="logo">
+        <h1>Design Hive Interiors Dashboard</h1>
+    </div>
+</header>
+
+<section class="services">
+    <h2>Consultation Requests</h2>
+
+    <div id="consultationsList"></div>
+</section>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCxZoHijE5CvmScaFpFyZJerYHcnFKB9hU",
+  authDomain: "design-hive-interiors-b13c0.firebaseapp.com",
+  projectId: "design-hive-interiors-b13c0",
+  storageBucket: "design-hive-interiors-b13c0.firebasestorage.app",
+  messagingSenderId: "680250444780",
+  appId: "1:680250444780:web:df7125691349276a8d8ec9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const list = document.getElementById("consultationsList");
+
+console.log("Dashboard started");
+
+const querySnapshot = await getDocs(collection(db, "consultations"));
+
+console.log("Documents found:", querySnapshot.size);
+
+querySnapshot.forEach((doc) => {
+
+  const data = doc.data();
+
+  list.innerHTML += `
+    <div class="card">
+      <h3>${data.name || "No Name"}</h3>
+      <p><strong>Email:</strong> ${data.email || ""}</p>
+      <p><strong>Phone:</strong> ${data.phone || ""}</p>
+      <p><strong>Project:</strong> ${data.message || ""}</p>
+    </div>
+  `;
+});
+
+</script>
+
+</body>
+</html>

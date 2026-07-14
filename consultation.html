@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Consultation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="assets/logo.png" alt="Design Hive Interiors Logo" class="logo">
+        <h1>Design Hive Interiors</h1>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="consultation.html">Consultation</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+</header>
+
+<section class="services">
+    <h2>Book a Consultation</h2>
+
+    <form id="consultationForm" class="card">
+        <input type="text" id="name" placeholder="Full Name" required><br><br>
+
+        <input type="email" id="email" placeholder="Email Address" required><br><br>
+
+        <input type="tel" id="phone" placeholder="Phone Number" required><br><br>
+
+        <textarea id="message" placeholder="Describe your project" rows="6" required></textarea><br><br>
+
+        <button type="submit" class="btn">Submit Request</button>
+    </form>
+
+    <p id="successMessage"></p>
+</section>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
